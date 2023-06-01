@@ -19,6 +19,8 @@ const NoteState = (props) => {
         }, 2000);
     }
 
+    // diuhweuhfiuhai
+
     return (
         // {for javascript {for object} }
         <NoteContext.Provider value={{ state: state, update: update }}>
