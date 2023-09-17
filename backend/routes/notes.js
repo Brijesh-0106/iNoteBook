@@ -1,4 +1,5 @@
 const express = require('express')
+// router = localhost:5000/api/notes
 const router = express.Router();
 // TO USE USER FORMAT.
 const Notes = require('../models/Notes');
@@ -7,7 +8,7 @@ var fetchuser = require("../middleware/fetchuser")
 // FOR EXPRESS VALIDATOR.
 const { body, validationResult } = require('express-validator');
 
-//ROUTE 1 :- Fetch All Notes Of Varified User => GET = /api/notes/fetchallnotes :- LOGIN REQUIRED
+//ROUTE 1 :- Fetch All Notes Of Varified User => GET = router/fetchallnotes :- LOGIN REQUIRED
 router.get('/fetchallnotes', fetchuser, async (req, res) => {
     try {
         let notes = await Notes.find({ user: req.user.id })
@@ -18,7 +19,7 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
     }
 })
 
-//ROUTE 2 :- Add Notes => POST = /api/notes/addnote :- LOGIN REQUIRED
+//ROUTE 2 :- Add Notes => POST = router/addnote :- LOGIN REQUIRED
 router.post('/addnote', fetchuser,
     [
         // VALIDATIONS FOR NAME, EMAIL, PASSWORD.
@@ -43,7 +44,7 @@ router.post('/addnote', fetchuser,
     })
 
 
-//ROUTE 3 :- Update Notes => PUT(For Update) = /api/notes/updatenote/:id :- LOGIN REQUIRED
+//ROUTE 3 :- Update Notes => PUT(For Update) = router/updatenote/:id :- LOGIN REQUIRED
 router.put('/updatenote/:id', fetchuser, async (req, res) => {//(:) is required.
     const { title, description, tag } = req.body
     try {
@@ -71,7 +72,7 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {//(:) is required.
 })
 
 
-//ROUTE 4 :- Delete Notes => DELETE = /api/notes/deletenote/:id :- LOGIN REQUIRED
+//ROUTE 4 :- Delete Notes => DELETE = router/deletenote/:id :- LOGIN REQUIRED
 router.delete('/deletenote/:id', fetchuser, async (req, res) => {//(:) is required.
     try {
         let note = await Notes.findById(req.params.id)

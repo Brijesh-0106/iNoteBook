@@ -25,4 +25,5 @@ const NotesSchema = new Schema({
         default: Date.now
     },
 });
+// 'notes' is name of collection.
 module.exports = mongoose.model('notes', NotesSchema);

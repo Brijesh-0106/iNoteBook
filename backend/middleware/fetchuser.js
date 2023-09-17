@@ -1,6 +1,6 @@
-// middleware is a function called every time when request is sent to path.
+// middleware is a function called BETWEEN processing the Request and sending the Response in your application method.
 // It is second parameter passed for that route.
-
+// 
 var jwt = require('jsonwebtoken');
 const jwt_secret = "phenomenal1isking"
 

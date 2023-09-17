@@ -3,19 +3,19 @@ const connectToMongo = require('./db');
 // To use routes
 const express = require('express');
 const app = express();
+// CORS->cross-origin resource sharing => Allow access for clients to use resource.
 var cors = require('cors')
-
 app.use(cors())
 
+
 connectToMongo();
-// port for backend
+
 const port = 5000;
 
-// TO USE REQ.BODY
+// express.json=Built-in middleware function to access body from request. 
 app.use(express.json());
-// Only parses request where Content/Type = 'application/json matches.
+// app.use(PATH,callback) used to set middleware-function(callback) on specified path.
 app.use('/api/auth', require('./routes/auth'));
-//.use is used to mount(insert) function at specified path.
 app.use('/api/notes', require('./routes/notes'));
 
 app.listen(port, () => {

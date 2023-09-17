@@ -1,13 +1,23 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+    let navigate = useNavigate()
+
     let location = useLocation();
+    
     useEffect(() => {
     }, [location]);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        navigate("/login")
+    }
+
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">iNotebook</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,14 +28,11 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">Home</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
-                        </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-light" type="submit">Search</button>
-                    </form>
+                    {!localStorage.getItem('token') ? <form className="d-flex" role="search">
+                        <Link className="btn btn-light mx-1" to="/login" role="button">Login</Link>
+                        <Link className="btn btn-light mx-1" to="/signup" role="button">SignUp</Link>
+                    </form> : <button onClick={handleLogout} className='btn btn-light mx-1'>Logout</button>}
                 </div>
             </div>
         </nav>
