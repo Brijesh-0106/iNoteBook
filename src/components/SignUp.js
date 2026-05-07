@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'      //Instead of useHistory.
+import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const SignUp = (props) => {
-
     let navigate = useNavigate();
-
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
     
     const handleClick = async (e) => {
@@ -18,10 +17,9 @@ const SignUp = (props) => {
             body: JSON.stringify({ name, email, password }),
         });
         const json = await response.json();
-        // console.log(json);
         if (json.success) {
-            localStorage.setItem('token', json.jwtToken)//jwtToken, if error occurs.
-            navigate("/")       //Used to nevigate to home page.
+            localStorage.setItem('token', json.jwtToken)
+            navigate("/dashboard")
             props.showalert("Sign successfully", "success");
         }
         else {
@@ -34,27 +32,44 @@ const SignUp = (props) => {
     }
 
     return (
-        <div>
-            <form className='container my-3' onSubmit={handleClick}>
-                <div className="mb-3 my-2">
-                    <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" id="name" name='name' onChange={onChange} aria-describedby="emailHelp" />
+        <div className="min-h-screen d-flex align-items-center justify-content-center py-5 position-relative overflow-hidden" style={{ paddingTop: '100px' }}>
+            <div className="bg-orb-3"></div>
+            <div className="float-anim z-1 w-100 d-flex justify-content-center">
+                <div className="glass-panel p-5 w-100 mx-3 shadow-lg" style={{ maxWidth: '550px', border: '1px solid rgba(236, 72, 153, 0.2)' }}>
+                    <div className="text-center mb-5">
+                        <div className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 shadow-lg" style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, var(--accent), var(--secondary))' }}>
+                            <i className="fa-solid fa-user-plus text-white fs-4"></i>
+                        </div>
+                        <h2 className="fw-black text-white mb-2 display-6">Create Account</h2>
+                        <p className="text-muted">Join the premium digital workspace</p>
+                    </div>
+                    <form onSubmit={handleClick}>
+                        <div className="mb-4">
+                            <label htmlFor="name" className="form-label text-muted fw-medium ms-1">Full Name</label>
+                            <input type="text" className="form-control form-control-luxury px-4 py-3" id="name" name='name' onChange={onChange} placeholder="John Doe" required />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="email" className="form-label text-muted fw-medium ms-1">Email Address</label>
+                            <input type="email" className="form-control form-control-luxury px-4 py-3" id="email" name='email' onChange={onChange} placeholder="name@example.com" required />
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6 mb-4">
+                                <label htmlFor="password" className="form-label text-muted fw-medium ms-1">Password</label>
+                                <input type="password" className="form-control form-control-luxury px-4 py-3" id="password" onChange={onChange} name='password' required minLength={3} placeholder="••••••••" />
+                            </div>
+                            <div className="col-md-6 mb-5">
+                                <label htmlFor="cpassword" className="form-label text-muted fw-medium ms-1">Confirm Password</label>
+                                <input type="password" className="form-control form-control-luxury px-4 py-3" id="cpassword" onChange={onChange} name='cpassword' required minLength={3} placeholder="••••••••" />
+                            </div>
+                        </div>
+                        <button type="submit" className="btn-luxury w-100 py-3 fs-5 mb-4 shadow-lg">Sign Up <i className="fa-solid fa-arrow-right ms-2"></i></button>
+                        <div className="text-center mt-3 pt-3 border-top border-secondary border-opacity-25">
+                            <span className="text-muted">Already have an account? </span>
+                            <Link to="/login" className="text-primary text-decoration-none fw-bold ms-1">Sign In</Link>
+                        </div>
+                    </form>
                 </div>
-                <div className="mb-3 my-2">
-                    <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="email" name='email' onChange={onChange} aria-describedby="emailHelp" />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div className="mb-3 my-2">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" onChange={onChange} name='password' required minLength={3} />
-                </div>
-                <div className="mb-3 my-2">
-                    <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" id="cpassword" onChange={onChange} name='cpassword' required minLength={3} />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            </div>
         </div>
     )
 }

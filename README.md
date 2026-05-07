@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# iNoteBook ✦ Pure Luxury Digital Workspace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![iNoteBook Banner](https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80)
 
-## Available Scripts
+> "Capture your brilliance in pure luxury."
 
-In the project directory, you can run:
+iNoteBook is a state-of-the-art, secure, and beautiful digital workspace designed for focus, speed, and elegance. Built on the MERN stack with a custom "Dark Luxury" design system.
 
-### `npm start`
+## ✨ Features
+- **Dark Luxury UI/UX**: A breathtaking glassmorphism aesthetic that reduces eye strain and inspires creativity.
+- **End-to-end Security**: Your notes are securely encrypted. Only you can access your thoughts.
+- **Lightning Fast**: Built on React 18, Node.js, Express, and MongoDB.
+- **Responsive Design**: Flawless experience across desktop, tablet, and mobile devices.
+- **SEO Optimized**: Fully equipped with Open Graph and Twitter Card meta tags.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB Database (Local or Atlas)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/inotebook.git
+   cd inotebook
+   ```
 
-### `npm run build`
+2. **Install dependencies**
+   ```bash
+   npm install
+   cd backend
+   npm install
+   cd ..
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Environment Setup**
+   Create a `.env` file in the `backend` directory:
+   ```env
+   JWT_SECRET=your_super_secret_key
+   MONGO_URI=mongodb://localhost:27017/inotebook
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Run the Application**
+   ```bash
+   npm run both
+   ```
+   *This uses concurrently to start both the React frontend and Node.js backend simultaneously.*
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📸 Social Media Preview
+This app is configured with Open Graph meta tags. To use the custom social preview image:
+1. Ensure `social_preview.png` is placed inside the `public` directory.
+2. Deploy the site, and platforms like Twitter, LinkedIn, and Discord will display your custom thumbnail!
 
-### `npm run eject`
+## 🛠 Tech Stack
+- **Frontend**: React, React Router, Bootstrap 5, Custom Vanilla CSS
+- **Backend**: Node.js, Express, Mongoose
+- **Security**: bcryptjs, jsonwebtoken
+- **Fonts**: Google Fonts (Inter & Outfit)
+- **Icons**: FontAwesome
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🌐 Deployment Ready
+To build for production:
+```bash
+npm run build
+```
+Deploy the `build` folder to your favorite hosting provider (Vercel, Netlify, etc.) and deploy the backend to a platform like Render or Heroku.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*Crafted with passion for creators, thinkers, and builders.*
